@@ -1,7 +1,5 @@
 {
 	"name": "CoremarkSpark",
-	"version": "1.0",
-	"author": "Cuki Tran <cuki321@yahoo.com.com>",
-	"license": "Apache License, Version 2.0",
-	"description": "Coremark Benchmark"
+	"version": "0.0.1",
+	"author": "Liem Tran <cuki321@yahoo.com>"
 }
