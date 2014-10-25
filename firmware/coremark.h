@@ -44,7 +44,7 @@ El Dorado Hills, CA, 95762
 #define MEM_MALLOC 1
 #define MEM_STACK 2
 
-#include "core_portme.h"
+//#include "core_portme.h"
 
 #if HAS_STDIO
 #include <stdio.h>
