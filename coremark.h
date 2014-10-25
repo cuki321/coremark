@@ -46,7 +46,15 @@ El Dorado Hills, CA, 95762
 
 //----------------------------LT--------------------------------//
 //#define ITERATIONS 5000
-#include "Arduino.h"
+//#include "Arduino.h"
+//----------------------------LT--------------------------------//
+#define COREMARK_ARDUINO 1
+#define ITERATIONS 50
+
+#if (COREMARK_ARDUINO==1)
+int coremark_main(void);
+#endif
+//--------------------------------------------------------------//
 
 /* Actual benchmark execution in iterate */
 void *iterate(void *pres);

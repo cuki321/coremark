@@ -22,7 +22,7 @@ El Dorado Hills, CA, 95762
 #include "coremark.h"
 
 //----------------------------LT--------------------------------//
-#include "Arduino.h"
+//#include "Arduino.h"
 //--------------------------------------------------------------//
 
 /* Function: iterate
