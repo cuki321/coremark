@@ -1,4 +1,5 @@
 //#define COREMARK_ARDUINO 1
+#include "coremark/coremark.h"
 
 void setup() {
   // put your setup code here, to run once:
