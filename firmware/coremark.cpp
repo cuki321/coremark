@@ -19,7 +19,7 @@ El Dorado Hills, CA, 95762
 /* File: core_main.c
 	This file contains the framework to acquire a block of memory, seed initial parameters, tun t he benchmark and report the results.
 */
-#include "coremark.h"
+#include "coremark/coremark.h"
 
 //--------------------------------------------------------core_state.c---------------------------------------------------------//
 enum CORE_STATE core_state_transition( ee_u8 **instr , ee_u32 *transition_count);
