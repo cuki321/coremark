@@ -23,7 +23,75 @@ El Dorado Hills, CA, 95762
 
 //----------------------------LT--------------------------------//
 //#include "Arduino.h"
-extern ee_u16 core_bench_list(core_results *res, ee_s16 finder_idx);
+//extern ee_u16 core_bench_list(core_results *res, ee_s16 finder_idx);
+ee_u16 core_bench_list(core_results *res, ee_s16 finder_idx) {
+	ee_u16 retval=0;
+	ee_u16 found=0,missed=0;
+	list_head *list=res->list;
+	ee_s16 find_num=res->seed3;
+	list_head *this_find;
+	list_head *finder, *remover;
+	list_data info;
+	ee_s16 i;
+
+	info.idx=finder_idx;
+	/* find <find_num> values in the list, and change the list each time (reverse and cache if value found) */
+	for (i=0; i<find_num; i++) {
+		info.data16= (i & 0xff) ;
+		this_find=core_list_find(list,&info);
+		list=core_list_reverse(list);
+		if (this_find==NULL) {
+			missed++;
+			retval+=(list->next->info->data16 >> 8) & 1;
+		}
+		else {
+			found++;
+			if (this_find->info->data16 & 0x1) /* use found value */
+				retval+=(this_find->info->data16 >> 9) & 1;
+			/* and cache next item at the head of the list (if any) */
+			if (this_find->next != NULL) {
+				finder = this_find->next;
+				this_find->next = finder->next;
+				finder->next=list->next;
+				list->next=finder;
+			}
+		}
+		if (info.idx>=0)
+			info.idx++;
+#if CORE_DEBUG
+	ee_printf("List find %d: [%d,%d,%d]\n",i,retval,missed,found);
+#endif
+	}
+	retval+=found*4-missed;
+	/* sort the list by data content and remove one item*/
+	if (finder_idx>0)
+		list=core_list_mergesort(list,cmp_complex,res);
+	remover=core_list_remove(list->next);
+	/* CRC data content of list from location of index N forward, and then undo remove */
+	finder=core_list_find(list,&info);
+	if (!finder)
+		finder=list->next;
+	while (finder) {
+		retval=crc16(list->info->data16,retval);
+		finder=finder->next;
+	}
+#if CORE_DEBUG
+	ee_printf("List sort 1: %04x\n",retval);
+#endif
+	remover=core_list_undo_remove(remover,list->next);
+	/* sort the list by index, in effect returning the list to original state */
+	list=core_list_mergesort(list,cmp_idx,NULL);
+	/* CRC data content of list */
+	finder=list->next;
+	while (finder) {
+		retval=crc16(list->info->data16,retval);
+		finder=finder->next;
+	}
+#if CORE_DEBUG
+	ee_printf("List sort 2: %04x\n",retval);
+#endif
+	return retval;
+}
 //--------------------------------------------------------------//
 
 /* Function: iterate
