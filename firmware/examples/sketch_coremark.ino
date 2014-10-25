@@ -10,5 +10,8 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  int total_time = 0;
+  total_time = coremark_main();
+  Serial.println("Coremark Running");
 
 }
