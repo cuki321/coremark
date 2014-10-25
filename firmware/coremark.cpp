@@ -891,7 +891,8 @@ int coremark_main(void) {
 		ee_u32 ctx;
 		if ((1<<(ee_u32)i) & results[0].execs) {
 			for (ctx=0 ; ctx<MULTITHREAD; ctx++)
-			results[ctx].memblock[i+1]=(char *)(results[ctx].memblock[0])+results[0].size*j;
+			//results[ctx].memblock[i+1]=(char *)(results[ctx].memblock[0])+results[0].size*j; //--LT--//
+			results[ctx].memblock[i+1]=(ee_u8 *)(results[ctx].memblock[0])+results[0].size*j;
 			j++;
 		}
 	}
