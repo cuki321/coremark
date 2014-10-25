@@ -2,10 +2,10 @@
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
-  while (!Serial);
-  //delay(4000);
-  //Serial.print("Testing");  
+  Serial.begin(9600);         // Open serial over USB.
+  while(!Serial.available())  // Wait here until the user presses ENTER 
+    SPARK_WLAN_Loop();        // in the Serial Terminal. Call the BG Tasks
+                              // while we are hanging around doing nothing.
 }
 
 void loop() {
