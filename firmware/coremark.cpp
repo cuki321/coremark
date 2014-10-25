@@ -117,14 +117,14 @@ int coremark_main(void) {
 		ee_printf("list_head structure too big for comparable data!\n");
 		return MAIN_RETURN_VAL;
 	}
-	results[0].seed1=get_seed(1);
+	/*results[0].seed1=get_seed(1);
 	results[0].seed2=get_seed(2);
 	results[0].seed3=get_seed(3);
-	results[0].iterations=get_seed_32(4);
+	results[0].iterations=get_seed_32(4);*/
 #if CORE_DEBUG
 	results[0].iterations=1;
 #endif
-	results[0].execs=get_seed_32(5);
+	//results[0].execs=get_seed_32(5);
 	if (results[0].execs==0) { /* if not supplied, execute all algorithms */
 		results[0].execs=ALL_ALGORITHMS_MASK;
 	}
@@ -248,10 +248,10 @@ int coremark_main(void) {
 	//cm_total_time = cm_stop - cm_start;
 	//--LT--// total_time=get_time();
 	/* get a function of the input to report */
-	seedcrc=crc16(results[0].seed1,seedcrc);
+	/*seedcrc=crc16(results[0].seed1,seedcrc);
 	seedcrc=crc16(results[0].seed2,seedcrc);
 	seedcrc=crc16(results[0].seed3,seedcrc);
-	seedcrc=crc16(results[0].size,seedcrc);
+	seedcrc=crc16(results[0].size,seedcrc);*/
 
 	switch (seedcrc) { /* test known output for common seeds */
 		case 0x8a02: /* seed1=0, seed2=0, seed3=0x66, size 2000 per algorithm */
@@ -299,7 +299,7 @@ int coremark_main(void) {
 			total_errors+=results[i].err;
 		}
 	}
-	total_errors+=check_data_types();
+	//total_errors+=check_data_types();
 	/* and report results */
 /*********************************** LT *********************************************
 	ee_printf("CoreMark Size    : %lu\n",(ee_u32)results[0].size);
