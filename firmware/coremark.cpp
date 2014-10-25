@@ -191,7 +191,7 @@ int coremark_main(void) {
 		}
 	}
 	/* call inits */
-	for (i=0 ; i<MULTITHREAD; i++) {
+	/*for (i=0 ; i<MULTITHREAD; i++) {
 		if (results[i].execs & ID_LIST) {
 			results[i].list=core_list_init(results[0].size,results[i].memblock[1],results[i].seed1);
 		}
@@ -201,7 +201,7 @@ int coremark_main(void) {
 		if (results[i].execs & ID_STATE) {
 			core_init_state(results[0].size,results[i].seed1,results[i].memblock[3]);
 		}
-	}
+	}*/
 	/* automatically determine number of iterations if not set */
 	if (results[0].iterations==0) {
 		secs_ret secs_passed=0;
