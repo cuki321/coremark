@@ -26,7 +26,9 @@ El Dorado Hills, CA, 95762
 //----------------------------LT--------------------------------//
 //#ifndef SPARK_COREMAK_H
 //#define SPARK_COREMARK_H
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "application.h"
 //--------------------------------------------------------------//
 
