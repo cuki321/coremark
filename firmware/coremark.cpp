@@ -224,7 +224,7 @@ int coremark_main(void) {
 	/* perform actual benchmark */
 	//--LT--// start_time();
 	int cm_start;
-	cm_start = millis();
+	//cm_start = millis();
 
 #if (MULTITHREAD>1)
 	if (default_num_contexts>MULTITHREAD) {
@@ -243,9 +243,9 @@ int coremark_main(void) {
 #endif
 	//--LT--// stop_time();
 	int cm_stop;
-	cm_stop = millis();
+	//cm_stop = millis();
 	int cm_total_time;
-	cm_total_time = cm_stop - cm_start;
+	//cm_total_time = cm_stop - cm_start;
 	//--LT--// total_time=get_time();
 	/* get a function of the input to report */
 	seedcrc=crc16(results[0].seed1,seedcrc);
