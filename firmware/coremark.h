@@ -24,8 +24,8 @@ El Dorado Hills, CA, 95762
 	Define total size for data algorithms will operate on
 */
 //----------------------------LT--------------------------------//
-#ifndef SPARK_COREMAK_H
-#define SPARK_COREMARK_H
+//#ifndef SPARK_COREMAK_H
+//#define SPARK_COREMARK_H
 
 #include "application.h"
 //--------------------------------------------------------------//
@@ -192,5 +192,5 @@ ee_u8 core_stop_parallel(core_results *res);
 ee_u32 core_init_matrix(ee_u32 blksize, void *memblk, ee_s32 seed, mat_params *p);
 ee_u16 core_bench_matrix(mat_params *p, ee_s16 seed, ee_u16 crc);
 
-#endif
+//#endif
 
